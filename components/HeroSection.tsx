@@ -73,10 +73,6 @@ export function HeroSection() {
           />
         </div>
 
-        <div className="absolute bottom-6 right-6 flex flex-col gap-1 rounded-2xl border border-[#1d2d22]/10 bg-white/85 px-4 py-3 shadow-[0_12px_28px_rgba(29,45,34,0.08)] backdrop-blur-sm">
-          <span className="text-xs text-[#5d6a60]">Monstera Deliciosa</span>
-          <strong className="text-2xl font-bold text-[#1d2d22]">$48</strong>
-        </div>
       </div>
     </section>
   );
