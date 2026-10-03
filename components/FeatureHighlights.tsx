@@ -1,15 +1,15 @@
 const highlights = [
   {
-    title: "Free delivery",
-    description: "on orders over $60",
+    title: "จัดส่งฟรี",
+    description: "เมื่อซื้อครบ $60",
   },
   {
-    title: "Plant care guide",
-    description: "tailored tips for every room",
+    title: "คู่มือดูแลต้นไม้",
+    description: "พร้อมเคล็ดลับที่เหมาะกับทุกมุมบ้าน",
   },
   {
-    title: "Secure checkout",
-    description: "with trusted payment partners",
+    title: "ชำระเงินอย่างปลอดภัย",
+    description: "ผ่านผู้ให้บริการชำระเงินที่เชื่อถือได้",
   },
 ];
 
