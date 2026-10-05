@@ -24,14 +24,14 @@ export function CartDrawer({
   return (
     <>
       <div
-        className={`fixed inset-0 z-[998] bg-[#161a17]/30 backdrop-blur-sm transition ${
+        className={`fixed inset-0 z-998 bg-[#161a17]/30 backdrop-blur-sm transition ${
           isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={onClose}
       />
 
       <aside
-        className={`fixed right-0 top-0 z-[999] flex h-screen w-full max-w-[420px] flex-col bg-white shadow-[-8px_0_44px_rgba(29,45,34,0.12)] transition-transform duration-300 ${
+        className={`fixed right-0 top-0 z-999 flex h-screen w-full max-w-105 flex-col bg-white shadow-[-8px_0_44px_rgba(29,45,34,0.12)] transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -63,7 +63,7 @@ export function CartDrawer({
                   alt={item.name}
                   width={86}
                   height={104}
-                  className="h-[104px] w-[86px] rounded-xl object-cover"
+                  className="h-26 w-21.5 rounded-xl object-cover"
                 />
 
                 <div className="flex flex-1 flex-col justify-between gap-2">
@@ -100,7 +100,7 @@ export function CartDrawer({
               onCheckout();
               onClose();
             }}
-            className="w-full rounded-full bg-gradient-to-r from-[#1d4b35] to-[#2f6e4d] px-4 py-3 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-full rounded-full bg-linear-to-r from-[#1d4b35] to-[#2f6e4d] px-4 py-3 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-50"
           >
             ดำเนินการชำระเงิน
           </button>
