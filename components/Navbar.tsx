@@ -91,7 +91,7 @@ export function useCart() {
 }
 
 export function Navbar({
-  navItems = ["Home", "Shop", "Collections", "About", "Journal"],
+  navItems = ["Home", "Shop", "About"],
 }: NavbarProps) {
   const { data: session, status } = useSession();
   const pathname = usePathname();
