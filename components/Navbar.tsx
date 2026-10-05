@@ -90,7 +90,7 @@ export function useCart() {
 }
 
 export function Navbar({
-  navItems = ["Home", "Shop", "Collections", "About", "Journal"],
+  navItems = ["หน้าแรก", "ร้านค้า", "คอลเลกชัน", "เกี่ยวกับเรา", "บทความ"],
 }: NavbarProps) {
   const { data: session, status } = useSession();
   const { cart, total, cartCount, isCartOpen, setIsCartOpen, removeFromCart, resetCart } =
@@ -108,9 +108,9 @@ export function Navbar({
           </span>
         </Link>
 
-        <nav aria-label="Main navigation" className="hidden items-center gap-7 md:flex">
+        <nav aria-label="เมนูหลัก" className="hidden items-center gap-7 md:flex">
           {navItems.map((item) => {
-            const href = item === "Home" ? "/" : item === "Shop" ? "/shop" : "#";
+            const href = item === "หน้าแรก" ? "/" : item === "ร้านค้า" ? "/shop" : "#";
 
             return (
               <Link
@@ -128,10 +128,10 @@ export function Navbar({
           <button
             type="button"
             onClick={() => setIsCartOpen(true)}
-            aria-label="Open cart"
+            aria-label="เปิดตะกร้าสินค้า"
             className="relative inline-flex items-center gap-2 rounded-full border border-[#1d2d22]/10 bg-white/80 px-4 py-2 text-sm font-medium text-[#1d2d22] transition hover:-translate-y-0.5"
           >
-            Cart
+            ตะกร้าสินค้า
             {cartCount > 0 && (
               <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#2f6e4d] text-[10px] font-bold text-white">
                 {cartCount}
@@ -156,7 +156,7 @@ export function Navbar({
                 onClick={() => signOut({ callbackUrl: "/" })}
                 className="inline-flex items-center justify-center rounded-full border border-[#1d2d22]/10 bg-white px-3 py-2 text-xs font-bold text-[#1d2d22] transition hover:-translate-y-0.5"
               >
-                Logout
+                ออกจากระบบ
               </button>
             </div>
           ) : (
@@ -174,7 +174,7 @@ export function Navbar({
               >
                 G
               </span>
-              Login with Google
+              ลงชื่อเข้าใช้ด้วย Google
             </Link>
           )}
         </div>

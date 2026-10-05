@@ -14,14 +14,13 @@ export function HeroSection() {
     <section className="grid items-center gap-10 pb-10 pt-10 lg:grid-cols-[1.15fr_0.85fr]">
       <div>
         <span className="inline-block rounded-full bg-[#dfeee5] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#1d4b35]">
-          New season collection
+          คอลเลกชันประจำฤดูกาลใหม่
         </span>
         <h1 className="mt-5 text-5xl font-semibold leading-[0.9] tracking-[-0.08em] text-[#1d2d22] sm:text-6xl lg:text-7xl">
-          Bring life and calm to your space.
+          เติมชีวิตชีวาและความสงบให้กับพื้นที่ของคุณ
         </h1>
         <p className="mt-5 max-w-xl text-base leading-7 text-[#5d6a60] sm:text-lg">
-          Curated indoor plants, statement pots, and easy-care essentials designed
-          for a greener, healthier lifestyle.
+          คัดสรรต้นไม้ในร่ม กระถางดีไซน์โดดเด่น และอุปกรณ์ดูแลรักษาที่ใช้งานง่าย เพื่อวิถีชีวิตที่ใกล้ชิดธรรมชาติและดีต่อสุขภาพยิ่งขึ้น
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">
@@ -29,7 +28,7 @@ export function HeroSection() {
             href="#collection"
             className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-[#1d4b35] to-[#2f6e4d] px-6 py-3 text-sm font-bold text-white shadow-[0_18px_30px_rgba(36,86,57,0.2)] transition hover:-translate-y-0.5"
           >
-            Shop collection
+            ดูคอลเลกชัน
           </a>
 
           {!isAuthenticated && (
@@ -37,7 +36,7 @@ export function HeroSection() {
               href="/login"
               className="inline-flex items-center justify-center rounded-full border border-[#1d2d22]/10 bg-white/80 px-6 py-3 text-sm font-bold text-[#1d2d22] transition hover:-translate-y-0.5"
             >
-              Continue with Google
+              ดำเนินการต่อด้วย Google
             </Link>
           )}
         </div>
@@ -45,22 +44,22 @@ export function HeroSection() {
         <div className="mt-9 flex flex-wrap gap-8">
           <div className="flex flex-col gap-1">
             <strong className="text-2xl font-bold text-[#1d2d22]">12k+</strong>
-            <span className="text-sm text-[#5d6a60]">happy plants</span>
+            <span className="text-sm text-[#5d6a60]">ต้นไม้ที่มีความสุข</span>
           </div>
           <div className="flex flex-col gap-1">
             <strong className="text-2xl font-bold text-[#1d2d22]">4.9/5</strong>
-            <span className="text-sm text-[#5d6a60]">customer love</span>
+            <span className="text-sm text-[#5d6a60]">ความนิยม</span>
           </div>
           <div className="flex flex-col gap-1">
             <strong className="text-2xl font-bold text-[#1d2d22]">48h</strong>
-            <span className="text-sm text-[#5d6a60]">dispatch time</span>
+            <span className="text-sm text-[#5d6a60]">เวลาจัดส่ง</span>
           </div>
         </div>
       </div>
 
       <div className="relative flex min-h-105 items-center justify-center lg:min-h-140">
         <div className="absolute left-6 top-8 z-10 rounded-full border border-[#1d2d22]/10 bg-white/80 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.12em] text-[#1d2d22]">
-          Best seller
+          สินค้าขายดี
         </div>
 
         <div className="relative h-105 w-full max-w-120 overflow-hidden rounded-4xl bg-linear-to-b from-[#6d9370]/20 to-[#6d9370]/5 shadow-[0_24px_50px_rgba(29,45,34,0.08)] sm:h-130">
