@@ -17,7 +17,7 @@ export function HeroSection() {
           New season collection
         </span>
         <h1 className="mt-5 text-5xl font-semibold leading-[0.9] tracking-[-0.08em] text-[#1d2d22] sm:text-6xl lg:text-7xl">
-          Bring life and calm to your space.
+          ต้นไม้ไม่เหม็นเเต่เวียขี้เหม็น
         </h1>
         <p className="mt-5 max-w-xl text-base leading-7 text-[#5d6a60] sm:text-lg">
           Curated indoor plants, statement pots, and easy-care essentials designed

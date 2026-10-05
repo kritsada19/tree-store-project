@@ -90,7 +90,7 @@ export function useCart() {
 }
 
 export function Navbar({
-  navItems = ["Home", "Shop", "Collections", "About", "Journal"],
+  navItems = ["Home", "Shop", "Collections", "About"],
 }: NavbarProps) {
   const { data: session, status } = useSession();
   const { cart, total, cartCount, isCartOpen, setIsCartOpen, removeFromCart, resetCart } =
@@ -110,7 +110,8 @@ export function Navbar({
 
         <nav aria-label="Main navigation" className="hidden items-center gap-7 md:flex">
           {navItems.map((item) => {
-            const href = item === "Home" ? "/" : item === "Shop" ? "/shop" : "#";
+            const href = item === "Home" ? "/" : item === "Shop" ? "/shop" : item === "About" ? "/about" :"#";
+
 
             return (
               <Link
