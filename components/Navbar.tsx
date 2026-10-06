@@ -100,7 +100,8 @@ export function Navbar({
 
   const activeItem =
     navItems.find((item) => {
-      const href = item === "Home" ? "/" : item === "Shop" ? "/shop" : "#";
+      const href =
+        item === "Home" ? "/" : item === "Shop" ? "/shop" : item === "About" ? "/about" : "#";
       return href === pathname || (item === "Home" && pathname === "/");
     }) ?? "Home";
 
@@ -121,18 +122,18 @@ export function Navbar({
           className="hidden items-center gap-4 px-2 md:flex lg:gap-6"
         >
           {navItems.map((item) => {
-            const href = item === "Home" ? "/" : item === "Shop" ? "/shop" : "#";
+            const href =
+              item === "Home" ? "/" : item === "Shop" ? "/shop" : item === "About" ? "/about" : "#";
             const isActive = activeItem === item;
 
             return (
               <Link
                 key={item}
                 href={href}
-                className={`relative rounded-full px-3 py-1.5 text-sm font-medium tracking-[-0.01em] transition-all duration-200 ease-out ${
-                  isActive
+                className={`relative rounded-full px-3 py-1.5 text-sm font-medium tracking-[-0.01em] transition-all duration-200 ease-out ${isActive
                     ? "scale-105 -translate-y-0.5 bg-[#edf7ee] text-[#1d2d22] shadow-[0_6px_18px_rgba(29,45,34,0.04)]"
                     : "text-[#5d6a60] hover:bg-[#f3f7f4] hover:text-[#1d2d22]"
-                }`}
+                  }`}
               >
                 {item}
               </Link>
@@ -141,6 +142,31 @@ export function Navbar({
         </nav>
 
         <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => setIsCartOpen(true)}
+            className="relative inline-flex items-center justify-center rounded-full border border-[#1d2d22]/10 bg-white p-2.5 text-[#1d2d22] shadow-[0_8px_18px_rgba(0,0,0,0.04)] transition hover:-translate-y-0.5"
+            aria-label="Open shopping cart"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-4 w-4"
+              aria-hidden="true"
+            >
+              <path d="M6 8h12l-1.2 9.6a2 2 0 0 1-2 1.7H9.2a2 2 0 0 1-2-1.7L6 8Z" />
+              <path d="M9 8V7a3 3 0 1 1 6 0v1" />
+            </svg>
+            {cartCount > 0 && (
+              <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#1d4b35] px-1 text-[10px] font-bold text-white">
+                {cartCount}
+              </span>
+            )}
+          </button>
           {status === "authenticated" && session?.user?.email ? (
             <div className="flex items-center gap-2">
               <div
