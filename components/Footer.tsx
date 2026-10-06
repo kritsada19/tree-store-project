@@ -5,15 +5,16 @@ export function Footer() {
         <span className="text-xl font-bold tracking-[-0.06em] text-[#1d2d22]">
           Tree-Shop
         </span>
-        <p className="mt-2">Thoughtful plants for a calmer home.</p>
+        <p className="mt-2">เติมความสดชื่นให้บ้าน <br></br>
+          ด้วยต้นไม้ที่คัดสรรมาอย่างใส่ใจ</p>
       </div>
 
       <div className="flex flex-wrap gap-5">
         <a href="#" className="text-sm transition hover:text-[#1d2d22]">
-          Shipping
+          การจัดส่ง
         </a>
         <a href="#" className="text-sm transition hover:text-[#1d2d22]">
-          Support
+          ติดต่อเรา
         </a>
         <a href="#" className="text-sm transition hover:text-[#1d2d22]">
           Instagram

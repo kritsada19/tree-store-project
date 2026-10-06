@@ -158,7 +158,7 @@ export function Navbar({
                 onClick={() => signOut({ callbackUrl: "/" })}
                 className="inline-flex items-center justify-center rounded-full border border-[#1d2d22]/10 bg-white px-3 py-2 text-xs font-bold text-[#1d2d22] transition hover:-translate-y-0.5"
               >
-                Logout
+                ออกจากระบบ
               </button>
             </div>
           ) : (
@@ -176,7 +176,7 @@ export function Navbar({
               >
                 G
               </span>
-              Login with Google
+              ลงชื่อเข้าใช้ด้วย Google
             </Link>
           )}
         </div>

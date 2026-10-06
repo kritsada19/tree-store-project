@@ -23,7 +23,7 @@ export default function LoginPage() {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[radial-gradient(circle_at_top,rgba(119,169,138,0.2),transparent_30%),#f8f4ef] px-4 py-10">
         <div className="rounded-full border border-[#1d2d22]/10 bg-white/80 px-6 py-3 text-sm font-medium text-[#1d2d22] shadow-[0_24px_50px_rgba(29,45,34,0.08)] backdrop-blur-sm">
-          Loading session...
+          กำลังโหลดเซสชัน...
         </div>
       </main>
     );
@@ -33,14 +33,16 @@ export default function LoginPage() {
     <main className="flex min-h-screen items-center justify-center bg-[radial-gradient(circle_at_top,rgba(119,169,138,0.2),transparent_30%),#f8f4ef] px-4 py-10">
       <div className="w-full max-w-md rounded-[28px] border border-[#1d2d22]/10 bg-white/80 p-8 shadow-[0_24px_50px_rgba(29,45,34,0.08)] backdrop-blur-sm">
         <span className="inline-block rounded-full bg-[#dfeee5] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#1d4b35]">
-          {status === "authenticated" ? "Welcome back" : "Welcome back"}
+          ยินดีต้อนรับกลับมา
         </span>
         <h1 className="mt-4 text-4xl font-semibold tracking-[-0.08em] text-[#1d2d22]">
-          {session ? `Hello, ${session.user?.name ?? "there"}` : "Sign in to Tree-Shop"}
+          {session
+            ? `สวัสดี${session.user?.name ? ` คุณ${session.user.name}` : ""}`
+            : "เข้าสู่ระบบ Tree-Shop"}
         </h1>
         <p className="mt-3 text-base leading-7 text-[#5d6a60]">
-          Continue with your Google account to save favorites, track orders, and
-          manage your green collection.
+          ดำเนินการต่อด้วยบัญชี Google ของคุณเพื่อบันทึกรายการโปรด
+          ติดตามคำสั่งซื้อ และ จัดการคอลเลกชันสีเขียวของคุณ
         </p>
 
         {status === "authenticated" ? (
@@ -49,7 +51,7 @@ export default function LoginPage() {
             onClick={() => signOut({ callbackUrl: "/" })}
             className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full border border-black/5 bg-white px-4 py-3 text-base font-semibold text-[#1d2d22] shadow-[0_8px_18px_rgba(0,0,0,0.04)] transition hover:-translate-y-0.5"
           >
-            Sign out
+            ลงชื่อออก
           </button>
         ) : (
           <button
@@ -67,7 +69,7 @@ export default function LoginPage() {
             >
               G
             </span>
-            Login with Google
+            ลงชื่อเข้าใช้ด้วย Google
           </button>
         )}
 
@@ -77,8 +79,11 @@ export default function LoginPage() {
           <span className="h-px bg-[#1d2d22]/10" />
         </div>
 
-        <Link href="/" className="block text-center text-sm font-bold text-[#1d4b35]">
-          Back to home
+        <Link
+          href="/"
+          className="block text-center text-sm font-bold text-[#1d4b35]"
+        >
+          กลับหน้าแรก
         </Link>
       </div>
     </main>
