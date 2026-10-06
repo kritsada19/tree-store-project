@@ -25,7 +25,7 @@ export default function ShopPage() {
           href="/"
           className="inline-flex items-center justify-center rounded-full border border-[#1d2d22]/10 bg-white px-5 py-2.5 text-sm font-bold text-[#1d2d22] shadow-[0_10px_24px_rgba(29,45,34,0.03)] transition hover:-translate-y-0.5"
         >
-          Back to home
+          กลับหน้าแรก
         </Link>
       </header>
 
@@ -60,7 +60,7 @@ export default function ShopPage() {
                 onClick={() => addToCart(product)}
                 className="inline-flex items-center justify-center rounded-full border border-[#1d2d22]/10 bg-white px-4 py-2 text-sm font-bold text-[#1d2d22] transition hover:-translate-y-0.5"
               >
-                Add
+                เพิ่มลงในตะกร้า
               </button>
             </div>
           </article>

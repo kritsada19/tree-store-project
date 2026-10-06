@@ -14,10 +14,10 @@ export function ProductGrid({ products, onAddToCart }: ProductGridProps) {
             <section id="collection" className="mt-16 flex items-end justify-between gap-4">
                 <div>
                     <span className="inline-block rounded-full bg-[#dfeee5] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#1d4b35]">
-                        Featured picks
+                        สินค้าแนะนำ
                     </span>
                     <h2 className="mt-3 text-3xl font-semibold tracking-[-0.06em] text-[#1d2d22] sm:text-5xl">
-                        Fresh favorites for every corner.
+                        เติมความสดชื่นให้ทุกมุมบ้าน
                     </h2>
                 </div>
             </section>
@@ -53,7 +53,7 @@ export function ProductGrid({ products, onAddToCart }: ProductGridProps) {
                                 onClick={() => onAddToCart(product)}
                                 className="inline-flex items-center justify-center rounded-full border border-[#1d2d22]/10 bg-white px-4 py-2 text-sm font-bold text-[#1d2d22] transition hover:-translate-y-0.5"
                             >
-                                Add
+                                เพิ่มลงตะกร้า
                             </button>
                         </div>
                     </article>
