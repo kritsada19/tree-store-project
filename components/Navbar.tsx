@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import { createContext, useContext, useMemo, useState } from "react";
 
@@ -28,8 +28,6 @@ type CartContextValue = {
 const CartContext = createContext<CartContextValue | undefined>(undefined);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const router = useRouter();
-  const { status } = useSession();
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -40,11 +38,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   );
 
   const addToCart = (product: Product) => {
-    if (status !== "authenticated") {
-      router.push("/login");
-      return;
-    }
-
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => item.id === product.id);
 
@@ -104,7 +97,6 @@ export function Navbar({
   const pathname = usePathname();
   const { cart, total, cartCount, isCartOpen, setIsCartOpen, removeFromCart, resetCart } =
     useCart();
-  const isAuthenticated = status === "authenticated";
 
   const activeItem =
     navItems.find((item) => {
@@ -150,34 +142,32 @@ export function Navbar({
         </nav>
 
         <div className="flex items-center gap-3">
-          {isAuthenticated && (
-            <button
-              type="button"
-              onClick={() => setIsCartOpen(true)}
-              className="relative inline-flex items-center justify-center rounded-full border border-[#1d2d22]/10 bg-white p-2.5 text-[#1d2d22] shadow-[0_8px_18px_rgba(0,0,0,0.04)] transition hover:-translate-y-0.5"
-              aria-label="Open shopping cart"
+          <button
+            type="button"
+            onClick={() => setIsCartOpen(true)}
+            className="relative inline-flex items-center justify-center rounded-full border border-[#1d2d22]/10 bg-white p-2.5 text-[#1d2d22] shadow-[0_8px_18px_rgba(0,0,0,0.04)] transition hover:-translate-y-0.5"
+            aria-label="Open shopping cart"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-4 w-4"
+              aria-hidden="true"
             >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4"
-                aria-hidden="true"
-              >
-                <path d="M6 8h12l-1.2 9.6a2 2 0 0 1-2 1.7H9.2a2 2 0 0 1-2-1.7L6 8Z" />
-                <path d="M9 8V7a3 3 0 1 1 6 0v1" />
-              </svg>
-              {cartCount > 0 && (
-                <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#1d4b35] px-1 text-[10px] font-bold text-white">
-                  {cartCount}
-                </span>
-              )}
-            </button>
-          )}
-          {isAuthenticated && session?.user?.email ? (
+              <path d="M6 8h12l-1.2 9.6a2 2 0 0 1-2 1.7H9.2a2 2 0 0 1-2-1.7L6 8Z" />
+              <path d="M9 8V7a3 3 0 1 1 6 0v1" />
+            </svg>
+            {cartCount > 0 && (
+              <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#1d4b35] px-1 text-[10px] font-bold text-white">
+                {cartCount}
+              </span>
+            )}
+          </button>
+          {status === "authenticated" && session?.user?.email ? (
             <div className="flex items-center gap-2">
               <div
                 className="inline-flex max-w-55 items-center gap-2 truncate rounded-full border border-[#1d4b35]/10 bg-[#eaf5ed] px-4 py-2 text-sm font-semibold text-[#1d4b35] shadow-[0_8px_18px_rgba(29,45,34,0.04)]"
@@ -219,7 +209,7 @@ export function Navbar({
       </header>
 
       <CartDrawer
-        isOpen={isAuthenticated && isCartOpen}
+        isOpen={isCartOpen}
         cart={cart}
         total={total}
         onClose={() => setIsCartOpen(false)}
