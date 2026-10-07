@@ -127,7 +127,7 @@ export function Navbar({
 
   return (
     <>
-      <header className="sticky top-4 z-20 mb-10 rounded-full border border-[#1d2d22]/10 bg-white/70 px-5 py-3 shadow-[0_10px_30px_rgba(29,45,34,0.05)] backdrop-blur-xl sm:px-6">
+      <header className="sticky top-4 z-20 mb-10 rounded-[22px] border border-[#1d2d22]/10 bg-white/70 px-5 py-3 shadow-[0_10px_30px_rgba(29,45,34,0.05)] backdrop-blur-xl sm:px-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-3">
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-[#1d4b35] to-[#2f6e4d] text-sm font-bold text-white">
@@ -194,7 +194,7 @@ export function Navbar({
               type="button"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
               aria-label="Toggle navigation menu"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#1d2d22]/10 bg-white text-[#1d2d22] shadow-[0_8px_18px_rgba(0,0,0,0.04)] transition hover:-translate-y-0.5 md:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-[14px] border border-[#1d2d22]/10 bg-white text-[#1d2d22] shadow-[0_8px_18px_rgba(0,0,0,0.04)] transition hover:-translate-y-0.5 md:hidden"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -253,47 +253,49 @@ export function Navbar({
         {isMobileMenuOpen && (
           <nav
             aria-label="Mobile navigation"
-            className="mt-4 flex flex-col gap-2 border-t border-[#1d2d22]/10 pt-4 md:hidden"
+            className="mt-4 overflow-hidden rounded-[18px] border border-[#1d2d22]/10 bg-white/95 shadow-[0_18px_32px_rgba(29,45,34,0.08)] md:hidden"
           >
-            {navItems.map((item) => {
-              const isActive = isActiveLink(item.href);
+            <div className="flex flex-col gap-1 p-2">
+              {navItems.map((item) => {
+                const isActive = isActiveLink(item.href);
 
-              return (
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`px-3 py-2.5 text-sm font-medium transition-colors ${
+                      isActive
+                        ? "bg-[#edf7ee] text-[#1d2d22]"
+                        : "text-[#5d6a60] hover:bg-[#f3f7f4] hover:text-[#1d2d22]"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+
+              {!isAuthenticated ? (
                 <Link
-                  key={item.href}
-                  href={item.href}
+                  href="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`rounded-full px-3 py-2 text-sm font-medium ${
-                    isActive
-                      ? "bg-[#edf7ee] text-[#1d2d22]"
-                      : "text-[#5d6a60] hover:bg-[#f3f7f4] hover:text-[#1d2d22]"
-                  }`}
+                  className="mt-1 inline-flex items-center justify-center gap-2 border border-[#1d2d22]/10 bg-[#f7faf8] px-4 py-2.5 text-sm font-semibold text-[#1d2d22]"
                 >
-                  {item.label}
+                  ลงชื่อเข้าใช้ด้วย Google
                 </Link>
-              );
-            })}
-
-            {!isAuthenticated ? (
-              <Link
-                href="/login"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-black/5 bg-white px-4 py-2 text-sm font-semibold text-[#1d2d22] shadow-[0_8px_18px_rgba(0,0,0,0.04)]"
-              >
-                ลงชื่อเข้าใช้ด้วย Google
-              </Link>
-            ) : (
-              <button
-                type="button"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  signOut({ callbackUrl: "/" });
-                }}
-                className="mt-2 inline-flex items-center justify-center rounded-full border border-[#1d2d22]/10 bg-white px-4 py-2 text-sm font-bold text-[#1d2d22]"
-              >
-                ออกจากระบบ
-              </button>
-            )}
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    signOut({ callbackUrl: "/" });
+                  }}
+                  className="mt-1 inline-flex items-center justify-center border border-[#1d2d22]/10 bg-[#f7faf8] px-4 py-2.5 text-sm font-bold text-[#1d2d22]"
+                >
+                  ออกจากระบบ
+                </button>
+              )}
+            </div>
           </nav>
         )}
       </header>
