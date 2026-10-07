@@ -131,15 +131,17 @@ export function Navbar({
         >
           {navItems.map((item) => {
             const href = item === "หน้าแรก" ? "/" : item === "ร้านค้า" ? "/shop" : "#";
+            const isActive = activeItem === item;
 
             return (
               <Link
                 key={item}
                 href={href}
-                className={`relative rounded-full px-3 py-1.5 text-sm font-medium tracking-[-0.01em] transition-all duration-200 ease-out ${isActive
+                className={`relative rounded-full px-3 py-1.5 text-sm font-medium tracking-[-0.01em] transition-all duration-200 ease-out ${
+                  isActive
                     ? "scale-105 -translate-y-0.5 bg-[#edf7ee] text-[#1d2d22] shadow-[0_6px_18px_rgba(29,45,34,0.04)]"
                     : "text-[#5d6a60] hover:bg-[#f3f7f4] hover:text-[#1d2d22]"
-                  }`}
+                }`}
               >
                 {item}
               </Link>
