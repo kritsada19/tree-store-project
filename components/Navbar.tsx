@@ -90,7 +90,7 @@ export function useCart() {
 }
 
 export function Navbar({
-  navItems = ["หน้าแรก", "ร้านค้า", "คอลเลกชัน", "เกี่ยวกับเรา", "บทความ"],
+  navItems = ["หน้าแรก", "ร้านค้า", "คอลเลกชัน", "เกี่ยวกับเรา", "บทความ", "ติดต่อเรา"],
 }: NavbarProps) {
   const { data: session, status } = useSession();
   const { cart, total, cartCount, isCartOpen, setIsCartOpen, removeFromCart, resetCart } =
@@ -110,7 +110,14 @@ export function Navbar({
 
         <nav aria-label="เมนูหลัก" className="hidden items-center gap-7 md:flex">
           {navItems.map((item) => {
-            const href = item === "หน้าแรก" ? "/" : item === "ร้านค้า" ? "/shop" : "#";
+            const href =
+              item === "หน้าแรก"
+                ? "/"
+                : item === "ร้านค้า"
+                  ? "/shop"
+                  : item === "ติดต่อเรา"
+                    ? "/contact"
+                    : "#";
 
             return (
               <Link

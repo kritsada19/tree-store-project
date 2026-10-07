@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function Footer() {
   return (
     <footer className="mt-16 flex flex-col gap-4 border-t border-[#1d2d22]/10 pt-6 text-[#5d6a60] sm:flex-row sm:items-center sm:justify-between">
@@ -13,9 +15,9 @@ export function Footer() {
         <a href="#" className="text-sm transition hover:text-[#1d2d22]">
           การจัดส่ง
         </a>
-        <a href="#" className="text-sm transition hover:text-[#1d2d22]">
+        <Link href="/contact" className="text-sm transition hover:text-[#1d2d22]">
           ติดต่อเรา
-        </a>
+        </Link>
         <a href="#" className="text-sm transition hover:text-[#1d2d22]">
           Instagram
         </a>
