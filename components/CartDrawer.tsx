@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import type { Product } from "@/lib/type/type";
 
@@ -58,17 +59,26 @@ export function CartDrawer({
                 key={item.id}
                 className="mb-5 flex gap-4 border-b border-[#1d2d22]/10 pb-4 last:border-b-0 last:pb-0"
               >
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  width={86}
-                  height={104}
-                  className="h-26 w-21.5 rounded-xl object-cover"
-                />
+                {/* แก้ไขเป็น item.id และใส่ onClick={onClose} เพื่อให้ปิดลิ้นชักตะกร้าเมื่อกดดูสินค้า */}
+                <Link href={`/shop/${item.id}`} onClick={onClose}>
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    width={86}
+                    height={104}
+                    className="h-26 w-21.5 rounded-xl object-cover hover:opacity-80 transition"
+                  />
+                </Link>
 
                 <div className="flex flex-1 flex-col justify-between gap-2">
                   <div>
-                    <h4 className="text-base font-semibold text-[#1d2d22]">{item.name}</h4>
+                    <Link
+                      href={`/shop/${item.id}`}
+                      onClick={onClose}
+                      className="text-base font-semibold text-[#1d2d22] hover:underline"
+                    >
+                      <h4>{item.name}</h4>
+                    </Link>
                     <span className="text-sm text-[#5d6a60]">
                       ${item.price} × {item.quantity} ชิ้น
                     </span>
@@ -77,7 +87,7 @@ export function CartDrawer({
                   <button
                     type="button"
                     onClick={() => onRemove(item.id)}
-                    className="self-start text-sm text-[#5d6a60] underline"
+                    className="self-start text-sm text-[#5d6a60] underline hover:text-red-600 transition"
                   >
                     ลบสินค้า
                   </button>
