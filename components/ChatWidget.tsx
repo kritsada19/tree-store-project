@@ -14,6 +14,13 @@ const initialMessage: ChatMessage = {
   text: "สวัสดีค่ะ 🌿 สอบถามเรื่องต้นไม้ การดูแล การจัดส่ง หรือพิมพ์ “ล็อกอิน” เพื่อดูวิธีเข้าสู่ระบบได้เลยนะคะ",
 };
 
+const quickQuestions = [
+  { id: "login", label: "เข้าสู่ระบบ", message: "วิธีล็อกอิน" },
+  { id: "prices", label: "ดูราคา", message: "ดูราคาและสินค้า" },
+  { id: "orders", label: "คำสั่งซื้อ", message: "สอบถามคำสั่งซื้อ" },
+  { id: "care", label: "ดูแลต้นไม้", message: "วิธีดูแลต้นไม้" },
+];
+
 function getReply(message: string) {
   const normalizedMessage = message.toLowerCase();
 
@@ -44,6 +51,7 @@ export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [draft, setDraft] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([initialMessage]);
+  const [usedQuickQuestions, setUsedQuickQuestions] = useState<string[]>([]);
   const messageEndRef = useRef<HTMLDivElement>(null);
   const nextMessageId = useRef(1);
 
@@ -51,21 +59,30 @@ export function ChatWidget() {
     messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isOpen]);
 
-  function sendMessage(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const text = draft.trim();
-    if (!text) return;
+  function sendTextMessage(text: string) {
+    const messageText = text.trim();
+    if (!messageText) return;
 
     setMessages((currentMessages) => [
       ...currentMessages,
-      { id: nextMessageId.current++, sender: "visitor", text },
+      { id: nextMessageId.current++, sender: "visitor", text: messageText },
       {
         id: nextMessageId.current++,
         sender: "shop",
-        text: getReply(text),
+        text: getReply(messageText),
       },
     ]);
+  }
+
+  function sendMessage(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    sendTextMessage(draft);
     setDraft("");
+  }
+
+  function sendQuickQuestion(questionId: string, message: string) {
+    sendTextMessage(message);
+    setUsedQuickQuestions((currentQuestions) => [...currentQuestions, questionId]);
   }
 
   return (
@@ -107,6 +124,25 @@ export function ChatWidget() {
                 {message.text}
               </p>
             ))}
+            {quickQuestions.some((question) => !usedQuickQuestions.includes(question.id)) && (
+              <div className="self-start">
+                <p className="mb-2 text-xs text-[#647168]">เลือกหัวข้อที่ต้องการสอบถาม</p>
+                <div className="flex flex-wrap gap-2">
+                  {quickQuestions
+                    .filter((question) => !usedQuickQuestions.includes(question.id))
+                    .map((question) => (
+                      <button
+                        key={question.id}
+                        type="button"
+                        onClick={() => sendQuickQuestion(question.id, question.message)}
+                        className="rounded-full border border-[#1d4b35]/20 bg-white px-3 py-2 text-xs font-semibold text-[#1d4b35] transition hover:border-[#1d4b35] hover:bg-[#f0f3ee] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1d4b35]"
+                      >
+                        {question.label}
+                      </button>
+                    ))}
+                </div>
+              </div>
+            )}
             <div ref={messageEndRef} />
           </div>
 
