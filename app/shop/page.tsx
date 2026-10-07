@@ -35,6 +35,7 @@ export default function ShopPage() {
             key={product.id}
             className="overflow-hidden rounded-[28px] border border-[#1d2d22]/10 bg-white/60 shadow-[0_10px_24px_rgba(29,45,34,0.03)] transition hover:-translate-y-1 hover:shadow-[0_20px_36px_rgba(29,45,34,0.08)]"
           >
+            <Link href={`/shop/${product.id}`} >
             <div className="relative h-80 bg-linear-to-b from-[#355a41]/10 to-[#355a41]/5">
               <Image
                 src={product.image}
@@ -42,8 +43,10 @@ export default function ShopPage() {
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                
               />
-            </div>
+              
+            </div></Link>
 
             <div className="flex items-end justify-between gap-4 p-5">
               <div>
