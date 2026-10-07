@@ -1,58 +1,135 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tree-Shop
 
-## Getting Started
+เว็บไซต์ร้านค้าออนไลน์สำหรับขายต้นไม้และของแต่งบ้านที่ให้ความรู้สึกสดชื่นและเป็นมิตรกับชีวิตประจำวัน
 
-First, create a local environment file from the example:
+## ภาพรวมของโปรเจกต์
+
+Tree-Shop เป็นเว็บไซต์แบบ e-commerce ที่ใช้ Next.js ในการสร้างหน้าเว็บแบบ modern และตอบสนองต่อการใช้งานบนมือถือและเดสก์ท็อป โดยมีฟีเจอร์หลักดังนี้
+
+- หน้า Landing Page แนะนำสินค้าและคุณสมบัติของร้าน
+- หน้าร้านค้าแสดงสินค้าให้เลือกซื้อ
+- ระบบตะกร้าสินค้าและยอดรวมการสั่งซื้อ
+- ระบบเข้าสู่ระบบด้วย Google OAuth ผ่าน NextAuth
+- หน้าข้อมูลร้านค้า และหน้า Contact
+
+## เทคโนโลยีที่ใช้
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS
+- NextAuth
+- Lucide React
+
+## ข้อกำหนดเบื้องต้น
+
+ก่อนเริ่มใช้งาน โปรดตรวจสอบว่าติดตั้งสิ่งต่อไปนี้แล้ว
+
+- Node.js 20 หรือสูงกว่า
+- npm หรือ pnpm
+- Google Account สำหรับตั้งค่า OAuth
+
+## วิธีติดตั้ง
+
+1. Clone โปรเจกต์
 
 ```bash
-cp .env.example .env.local
+git clone <repository-url>
+cd tree-store-project
 ```
 
-Then fill in your Google OAuth credentials and a secure secret:
+2. ติดตั้ง Dependencies
+
+```bash
+npm install
+```
+
+3. สร้างไฟล์ `.env.local`
+
+```bash
+copy .env.example .env.local
+```
+
+> หากไม่มีไฟล์ `.env.example` ให้สร้างไฟล์ `.env.local` เอง และใส่ค่าต่อไปนี้
 
 ```env
-AUTH_SECRET=replace-with-a-long-random-secret
+AUTH_SECRET=your_long_random_secret
 AUTH_GOOGLE_ID=your-google-client-id.apps.googleusercontent.com
 AUTH_GOOGLE_SECRET=your-google-client-secret
 NEXTAUTH_URL=http://localhost:3000
 ```
 
-Then run the development server:
+4. ตั้งค่า Google OAuth
+
+- เข้าเว็บไซต์ Google Cloud Console
+- สร้าง Project หรือเลือก Project ที่มีอยู่
+- เปิดใช้งาน Google OAuth
+- สร้าง OAuth Client ID
+- เพิ่ม Redirect URI ต่อไปนี้
+
+```text
+http://localhost:3000/api/auth/callback/google
+```
+
+- นำ Client ID และ Client Secret ใส่ใน `.env.local`
+
+## วิธีใช้งาน
+
+1. เริ่มต้นเซิร์ฟเวอร์ในโหมดพัฒนา
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. เปิดเบราว์เซอร์ที่
 
-## Google OAuth setup
+```text
+http://localhost:3000
+```
 
-1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
-2. Create a project or select an existing one.
-3. Enable the Google OAuth consent screen.
-4. Create OAuth 2.0 Client ID credentials.
-5. Add `http://localhost:3000/api/auth/callback/google` as an authorized redirect URI.
-6. Copy the Client ID and Client Secret into `.env.local`.
+3. ใช้งานเว็บไซต์ได้ตามฟีเจอร์
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- ดูสินค้าแนะนำที่หน้าแรก
+- คลิกเข้าสู่ระบบเพื่อล็อกอินด้วย Google
+- เพิ่มสินค้าลงตะกร้า
+- ดูข้อมูลร้านค้าและช่องทางติดต่อ
 
-## Learn More
+## โครงสร้างโปรเจกต์
 
-To learn more about Next.js, take a look at the following resources:
+```text
+tree-store-project/
+├── app/
+│   ├── api/
+│   ├── about/
+│   ├── contact/
+│   ├── login/
+│   ├── shop/
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/
+├── lib/
+├── public/
+├── auth.ts
+├── next.config.ts
+├── package.json
+├── tsconfig.json
+├── postcss.config.mjs
+└── README.md
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## รายชื่อสมาชิก
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- นายกฤษฎา มูลเเจ่ม 6804101304
+- นายอัครา แซ่จู 6804101398
+- นายอชิระ อินต๊ะนางแล 6804101395
+- นายวรวัตน์ ไชยาโส 6804101378
+- นายภูภิพัฒน์ ใหม่น้อย 6804101368
 
-## Deploy on Vercel
+## หมายเหตุ
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+โปรเจกต์นี้เป็นเวิร์กช็อปสำหรับการสร้างเว็บไซต์ร้านค้าออนไลน์แบบใช้งานจริง โดยมีเป้าหมายเพื่อฝึกฝนการพัฒนา Frontend, Authentication, Routing และการออกแบบ UI/UX ด้วย Next.js
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+โครงการนี้ใช้สำหรับการศึกษาและพัฒนาต่อยอดภายในกลุ่ม
