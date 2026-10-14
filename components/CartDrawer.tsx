@@ -59,7 +59,7 @@ export function CartDrawer({
                 key={item.id}
                 className="mb-5 flex gap-4 border-b border-[#1d2d22]/10 pb-4 last:border-b-0 last:pb-0"
               >
-                {/* แก้ไขเป็น item.id และใส่ onClick={onClose} เพื่อให้ปิดลิ้นชักตะกร้าเมื่อกดดูสินค้า */}
+               
                 <Link href={`/shop/${item.id}`} onClick={onClose}>
                   <Image
                     src={item.image}

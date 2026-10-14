@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import {Footer} from '@/components/Footer'
 
 export default function AboutPage() {
   return (
@@ -79,27 +80,7 @@ export default function AboutPage() {
         </div>
       </main>
 
-      {/* Footer Section */}
-      <footer className="max-w-6xl mx-auto w-full pt-8 border-t border-gray-300/50 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
-          <h3 className="font-bold text-base text-[#1A1A1A]">Tree-Shop</h3>
-          <p className="text-xs text-gray-500 mt-1">
-            Thoughtful plants for a calmer home.
-          </p>
-        </div>
-
-        <div className="flex items-center gap-6 text-xs font-medium text-gray-600">
-          <Link href="/shipping" className="hover:text-black transition-colors">
-            Shipping
-          </Link>
-          <Link href="/support" className="hover:text-black transition-colors">
-            Support
-          </Link>
-          <Link href="https://instagram.com" target="_blank" className="hover:text-black transition-colors">
-            Instagram
-          </Link>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
