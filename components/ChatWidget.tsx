@@ -28,8 +28,8 @@ function getReply(message: string) {
     return "วิธีเข้าสู่ระบบ Tree-Shop:\n1. กด “ลงชื่อเข้าใช้ด้วย Google” ที่แถบเมนู หรือเข้าไปที่หน้าล็อกอิน\n2. เลือกบัญชี Google ที่ต้องการใช้\n3. ยืนยันการเข้าสู่ระบบ แล้วระบบจะพากลับมาที่หน้าแรกค่ะ";
   }
 
-  if (/ราคา|ซื้อ|สินค้า|ต้นไม้|plant|price|shop/.test(normalizedMessage)) {
-    return "เลือกชมต้นไม้และราคาได้ที่หน้าร้านค้าเลยค่ะ หากอยากให้ช่วยเลือกต้นไม้ บอกสภาพแสงหรือพื้นที่ที่ต้องการวางได้เลยนะคะ";
+  if (/คำสั่งซื้อ|ออเดอร์|สถานะ|order/.test(normalizedMessage)) {
+    return "สำหรับสอบถามสถานะคำสั่งซื้อ กรุณาส่งรายละเอียดไปที่ hello@tree-shop.com แล้วทีมงานจะช่วยตรวจสอบให้ค่ะ";
   }
 
   if (/ส่ง|จัดส่ง|delivery|shipping/.test(normalizedMessage)) {
@@ -40,8 +40,8 @@ function getReply(message: string) {
     return "การดูแลขึ้นอยู่กับชนิดของต้นไม้และปริมาณแสงค่ะ บอกชื่อต้นไม้หรือส่งรายละเอียดอาการมาได้เลย หรือดูต้นไม้แต่ละชนิดได้ที่หน้าร้านค้าค่ะ";
   }
 
-  if (/คำสั่งซื้อ|ออเดอร์|สถานะ|order/.test(normalizedMessage)) {
-    return "สำหรับสอบถามสถานะคำสั่งซื้อ กรุณาส่งรายละเอียดไปที่ hello@tree-shop.com แล้วทีมงานจะช่วยตรวจสอบให้ค่ะ";
+  if (/ราคา|ซื้อ|สินค้า|ต้นไม้|plant|price|shop/.test(normalizedMessage)) {
+    return "เลือกชมต้นไม้และราคาได้ที่หน้าร้านค้าเลยค่ะ หากอยากให้ช่วยเลือกต้นไม้ บอกสภาพแสงหรือพื้นที่ที่ต้องการวางได้เลยนะคะ";
   }
 
   return "ขอบคุณที่สอบถามนะคะ แชตนี้ช่วยตอบคำถามเบื้องต้น หากต้องการคุยกับทีมงานโดยตรง สามารถไปที่หน้า “ติดต่อเรา” ได้ค่ะ";
@@ -115,11 +115,10 @@ export function ChatWidget() {
             {messages.map((message) => (
               <p
                 key={message.id}
-                className={`max-w-[88%] whitespace-pre-wrap rounded-2xl px-4 py-3 text-sm leading-6 ${
-                  message.sender === "visitor"
+                className={`max-w-[88%] whitespace-pre-wrap rounded-2xl px-4 py-3 text-sm leading-6 ${message.sender === "visitor"
                     ? "self-end rounded-br-md bg-[#1d4b35] text-white"
                     : "self-start rounded-bl-md bg-[#f0f3ee] text-[#1d2d22]"
-                }`}
+                  }`}
               >
                 {message.text}
               </p>
